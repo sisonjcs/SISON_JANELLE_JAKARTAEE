@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:h="jakarta.faces.html" xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>View Report</title>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+        <style>
+            body {
+                background-color: #f5f5f5;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            .header {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 2rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .header h2 {
+                margin: 0;
+                font-size: 1.8rem;
+                font-weight: 600;
+            }
+            .container {
+                max-width: 1200px;
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+            .card {
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                padding: 2rem;
+            }
+            .field-label {
+                font-weight: 600;
+                color: #555;
+                margin-bottom: 0.25rem;
+            }
+            .field-value {
+                margin-bottom: 1.5rem;
+                white-space: pre-wrap;
+            }
+            .action-bar {
+                margin-top: 1.5rem;
+                display: flex;
+                justify-content: flex-end;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="header">
+            <div class="container">
+                <h2>View Report</h2>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="card">
+                <div class="field-label">Title</div>
+                <div class="field-value">
+                    <h:outputText value="#{reportViewBean.title}"/>
+                </div>
+                <div class="field-label">Detail</div>
+                <div class="field-value">
+                    <h:outputText value="#{reportViewBean.detail}"/>
+                </div>
+                <div class="action-bar">
+                    <p:link outcome="/reportList.xhtml" value="Back to List"
+                            styleClass="p-button p-button-secondary p-button-raised"/>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
