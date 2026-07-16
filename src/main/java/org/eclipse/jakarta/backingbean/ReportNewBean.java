@@ -9,7 +9,8 @@ import jakarta.inject.Named;
 import jakarta.validation.constraints.NotBlank;
 
 @Named @RequestScoped
-public class ReportNewBean{
+public class ReportNewBean {
+
     @NotBlank(message = "You cannot leave the title blank.")
     private String title;
     private String detail;
@@ -17,28 +18,27 @@ public class ReportNewBean{
     @Inject
     private ReportRepository reportRepository;
 
-    public String create(){
+    public String create() {
         ReportDto newReport = new ReportDto();
         newReport.setTitle(title);
         newReport.setDetail(detail);
         reportRepository.create(newReport);
-
         return "/reportList.xhtml?faces-redirect=true";
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getDetail(){
+    public String getDetail() {
         return detail;
     }
 
-    public void setDetail(String detail){
+    public void setDetail(String detail) {
         this.detail = detail;
     }
 }

@@ -1,6 +1,4 @@
 package org.eclipse.jakarta.backingbean;
-
-import org.eclipse.jakarta.dto.ReportDto;
 import org.eclipse.jakarta.infrastracture.repository.ReportRepository;
 
 import jakarta.enterprise.context.RequestScoped;
@@ -14,8 +12,8 @@ public class ReportDeleteBean {
     @Inject
     private ReportRepository reportRepository;
 
-    public String delete(ReportDto report) {
-        reportRepository.delete(report);
+    public String delete(int id) {
+        reportRepository.delete(id);
         return "/reportList.xhtml?faces-redirect=true";
     }
 }

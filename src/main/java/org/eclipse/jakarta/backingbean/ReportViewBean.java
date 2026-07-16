@@ -3,8 +3,10 @@ package org.eclipse.jakarta.backingbean;
 import java.io.Serializable;
 
 import org.eclipse.jakarta.dto.ReportDto;
+import org.eclipse.jakarta.infrastracture.repository.ReportRepository;
 
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @Named
@@ -15,8 +17,11 @@ public class ReportViewBean implements Serializable {
 	
 	private ReportDto report;
 	
-	public String view(ReportDto report) {
-		this.report = report;
+	@Inject
+	private ReportRepository reportRepository;
+	
+	public String view(int id) {
+		this.report = reportRepository.findById(id);
 		return "/reportView.xhtml?faces-redirect=true";
 	}
 	

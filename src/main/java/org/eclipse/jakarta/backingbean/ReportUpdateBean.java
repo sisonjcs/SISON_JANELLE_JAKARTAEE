@@ -14,24 +14,27 @@ import jakarta.validation.constraints.NotBlank;
 @SessionScoped
 public class ReportUpdateBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    private int id;
+
     @NotBlank(message = "You cannot leave the title blank.")
     private String newTitle;
     private String newDetail;
 
-    private ReportDto report;
-
     @Inject
     private ReportRepository reportRepository;
 
-    public String update(ReportDto report) {
-        this.report = report;
+    public String update(int id) {
+        this.id = id;
+        ReportDto report = reportRepository.findById(id);
         this.newTitle = report.getTitle();
         this.newDetail = report.getDetail();
         return "/reportUpdate.xhtml?faces-redirect=true";
     }
 
     public String save() {
-        reportRepository.update(report, newTitle, newDetail);
+        reportRepository.update(id, newTitle, newDetail);
         return "/reportList.xhtml?faces-redirect=true";
     }
 
